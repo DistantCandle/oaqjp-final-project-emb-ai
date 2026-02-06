@@ -38,5 +38,5 @@ def emotion_detector(text_to_analyse):  # Define a function named sentiment_anal
         'fear': emotion_scores['fear'],
         'joy': emotion_scores['joy'],
         'sadness': emotion_scores['sadness'],
-        'dominant_emotion': dominant_emotion
+        'label': dominant_emotion
     }  

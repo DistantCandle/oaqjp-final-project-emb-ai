@@ -4,23 +4,21 @@ from EmotionDetection.emotion_detection import emotion_detector
 app = Flask(__name__)
 
 @app.route("/")
-def home():
+def render_index_page():
     return render_template("index.html")
 
 @app.route("/emotionDetector")
 def emotion_detector_route():
-    text_to_analyze = request.args.get("text")
+    text_to_analyze = request.args.get("textToAnalyze")
 
-    # Handle empty input
-    if not text_to_analyze:
-        return ({}, )
-
-    # Call emotion detector function
+    # Call the emotion detector
     result = emotion_detector(text_to_analyze)
 
-    # Handle error case from API
-    if result is None or result.get("dominant_emotion") is None:
-        return "Invalid text! Please try again."
+    # Handle blank or invalid input
+    if result is None:
+        return "Invalid empty text! Please try again!"
+    if result.get("label") is None:
+        return "Invalid text! Please try again!"
 
     # Format response as requested
     response_text = (
@@ -30,7 +28,7 @@ def emotion_detector_route():
         f"'fear': {result['fear']}, "
         f"'joy': {result['joy']} and "
         f"'sadness': {result['sadness']}. "
-        f"The dominant emotion is {result['dominant_emotion']}."
+        f"The dominant emotion is {result['label']}."
     )
 
     return response_text
