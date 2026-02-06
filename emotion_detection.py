@@ -14,11 +14,11 @@ def emotion_detector(text_to_analyse):  # Define a function named sentiment_anal
     emotions = response_dict['emotionPredictions'][0]['emotion']
     # Find dominant emotion
     emotion_scores = {
-        'anger':    emotions['anger']
-        'disgust':  emotions['disgust']
-        'fear':     emotions['fear']
-        'joy':      emotions['joy']
-        'sadness':  emotions['sadness']
+        'anger':    emotions['anger'],
+        'disgust':  emotions['disgust'],
+        'fear':     emotions['fear'],
+        'joy':      emotions['joy'],
+        'sadness':  emotions['sadness'],
     }
     dominant_emotion = max(emotion_scores, key=emotion_scores.get)
 
