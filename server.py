@@ -13,13 +13,13 @@ def emotion_detector_route():
 
     # Handle empty input
     if not text_to_analyze:
-        return "Invalid text! Please try again."
+        return ({}, )
 
     # Call emotion detector function
     result = emotion_detector(text_to_analyze)
 
     # Handle error case from API
-    if result is None or result.get("label") is None:
+    if result is None or result.get("dominant_emotion") is None:
         return "Invalid text! Please try again."
 
     # Format response as requested
@@ -30,7 +30,7 @@ def emotion_detector_route():
         f"'fear': {result['fear']}, "
         f"'joy': {result['joy']} and "
         f"'sadness': {result['sadness']}. "
-        f"The dominant emotion is {result['label']}."
+        f"The dominant emotion is {result['dominant_emotion']}."
     )
 
     return response_text
