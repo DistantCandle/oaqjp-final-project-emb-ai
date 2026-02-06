@@ -22,3 +22,5 @@ class TestEmotionDetector(unittest.TestCase):
         # Test case for fear
         result_5 = sentiment_analyzer('I am really afraid that this will happen')
         self.assertEqual(result_5['label'], 'SENT_FEAR')
+
+unittest.main()
