@@ -1,4 +1,4 @@
-from EmotionDetectionemotion_detection import emotion_detector
+from EmotionDetection.emotion_detection import emotion_detector
 import unittest
 
 class TestEmotionDetector(unittest.TestCase):
